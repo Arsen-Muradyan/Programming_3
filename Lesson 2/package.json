@@ -1,0 +1,22 @@
+{
+  "name": "programming_3",
+  "version": "1.0.0",
+  "description": "Game Part 1",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arsen-Muradyan/Programming_3.git"
+  },
+  "author": "Arsen Muradyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arsen-Muradyan/Programming_3/issues"
+  },
+  "homepage": "https://github.com/Arsen-Muradyan/Programming_3#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

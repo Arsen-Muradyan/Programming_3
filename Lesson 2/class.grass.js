@@ -1,4 +1,5 @@
-class Grass extends LivingCreature {
+var LivingCreature = require('./general')
+module.exports = class Grass extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index)
     }

@@ -1,4 +1,5 @@
-class Spider extends LivingCreature {
+var LivingCreature = require('./general')
+module.exports = class Spider extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index)
         this.energy = 4;

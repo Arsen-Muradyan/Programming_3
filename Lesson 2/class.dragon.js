@@ -1,4 +1,5 @@
-class Dragon extends LivingCreature {
+var LivingCreature = require('./general')
+module.exports = class Dragon extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index)
         this.energy = 18;
