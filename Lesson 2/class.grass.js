@@ -1,7 +1,9 @@
 var LivingCreature = require('./general')
+var random = require('./random')
 module.exports = class Grass extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index)
+        this.multiply = 0
     }
     mul() {
         this.multiply+=2

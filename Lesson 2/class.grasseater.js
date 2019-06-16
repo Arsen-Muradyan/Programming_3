@@ -1,10 +1,11 @@
 var LivingCreature = require('./general')
-module.exports = class GrassEater  extends LivingCreature{
+var random = require('./random')
+
+module.exports = class GrassEater extends LivingCreature {
     constructor(x, y, index) {
        super(x, y, index)
        this.energy = 5
     }
-    
     chooseCell(character) {
         super.getNewCoordinates();
         return super.chooseCell(character)
@@ -37,6 +38,7 @@ module.exports = class GrassEater  extends LivingCreature{
             this.y = newY;
             this.x = newX;
             this.energy += 2;
+            grassEaterWork++
         }
     }
     mul() {
