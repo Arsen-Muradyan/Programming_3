@@ -110,6 +110,7 @@ module.exports = class Dragon extends LivingCreature {
             matrix[this.y][this.x] = 1
             var newgrass = new Grass(this.x, this.y, 1) 
             grassArr.push(newgrass) 
+            grassLength++
             for (var i in dragonArr) {
                 if (this.x == dragonArr[i].x && this.y == dragonArr[i].y) {
                     dragonArr.splice(i, 1);

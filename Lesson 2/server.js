@@ -28,6 +28,7 @@ herbivorouEaterArr = []
 grassEaterWork = 0;
 predatorWork = 0;
 spiderWork = 0
+grassLength = 0
 dragonWork = {
     grass: 0,
     grassEater: 0,
@@ -46,6 +47,7 @@ function pushing(arr) {
     for (var i = 0; i < m; i++) {
         var rand = Math.floor(Math.random() * 5)
         d.push(rand)
+        
     }
     var randDragon = [0, 2, 3, 5, 0, 0]
     var randIndex = Math.floor(Math.random() * randDragon.length+1)
@@ -94,6 +96,11 @@ function createObjects() {
     }   
 }
 createObjects()
+grassLength = grassArr.length
+grassEaterLength = grassEaterArr.length
+predatorLength = herbivorouEaterArr.length
+spiderLength = spiderArr.spiderLength 
+dragonLength = dragonArr.spiderLength
 // Run Players Methods
 function game() {
     for (var i in grassArr) {
@@ -130,7 +137,10 @@ function game() {
         spiderEat: spiderWork,
         dragonEat: dragonWork,
         matrix,
-        weather
+        weather,
+        grassLength,
+        grassEaterLength,
+        predatorLength
     }
     io.sockets.emit("data", sendData)
 }

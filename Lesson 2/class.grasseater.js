@@ -48,6 +48,7 @@ module.exports = class GrassEater extends LivingCreature {
             grassEaterArr.push(newGrassEater);
             matrix[newCell[1]][newCell[0]] = 2;
             this.energy = 5;
+            grassEaterLength++
         }
     }
     dead() {

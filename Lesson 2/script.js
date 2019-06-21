@@ -17,45 +17,15 @@ function setup() {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
         //Matirxi to string
-        var matrixStr = matrix.join()
         //find objects with matrix number
-        var grassCount = matrixStr.match(/1/g)
-        var grassEaterCount = matrixStr.match(/2/g)
-        var predatorCount = matrixStr.match(/3/g)
-        var spiderCount = matrixStr.match(/4/g)
-        var dragonCount = matrixStr.match(/5/g)
+        var grassLength = data.grassLength
+    
         //Set Default Length in Objects
-        var grassLength;
-        var grassEaterLength
-        var predatorLength
-        var spiderLength
-        var dragonLength
-        //Check objects array length null or number
-        if (grassCount !== null) {
-            grassLength =  grassCount.length
-        } else {
-            grassLength = 0
-        } 
-        if (grassEaterCount !== null) {
-            grassEaterLength =  grassEaterCount.length
-        } else {
-            grassEaterLength = 0
-        } 
-        if (predatorCount !== null) {
-            predatorLength =  predatorCount.length
-        } else {
-            predatorLength = 0
-        }
-        if (spiderCount !== null) {
-            spiderLength =  spiderCount.length
-        } else {
-            spiderLength = 0
-        }
-        if (dragonCount !== null) {
-            dragonLength =  dragonCount.length
-        } else {
-            dragonLength = 0
-        }
+        var grassEaterLength = data.grassEaterLength 
+        var predatorLength = data.predatorLength
+        var spiderLength = data.spiderLength
+        var dragonLength = data.spiderLength
+        
         //Check how many item eat objects
         var grassEat = data.grassEat; 
         var predatorEat = data.predatorEat
