@@ -38,6 +38,7 @@ module.exports = class  HerbivorouEater extends LivingCreature {
                 this.y = newY;
                 this.x = newX;
                 this.energy++;
+                predatorWork++
             }
     }
     mul() {

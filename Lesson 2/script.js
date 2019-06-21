@@ -1,25 +1,66 @@
+var n = 0;
 function setup() {
     var socket = io();
-    var side = 20;
+    var side = 10;
     var matrix = [];
+    createCanvas(500, 500)
     //! Getting DOM objects (HTML elements)
     let grassCountElement = document.getElementById('grassCount');
     let grassEaterElement = document.getElementById('grassEaterCount')
+    let predatorElement = document.getElementById('predatorCount')
+    let spiderElement = document.getElementById('spiderCount')
+    let dragonElement = document.getElementById('dragonCount')
+    var weatherElement = document.getElementById('weather')
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
-
     socket.on("data", drawCreatures);
-
     function drawCreatures(data) {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
-        var matirxStr = matrix.join()
-        var grassCount = matirxStr.match(/1/g)
-        var grassEat = data.grassEat; 
+        //Matirxi to string
+        var matrixStr = matrix.join()
+        //find objects with matrix number
+        var grassCount = matrixStr.match(/1/g)
+        var grassEaterCount = matrixStr.match(/2/g)
+        var predatorCount = matrixStr.match(/3/g)
+        var spiderCount = matrixStr.match(/4/g)
+        var dragonCount = matrixStr.match(/5/g)
+        //Set Default Length in Objects
+        var grassLength;
+        var grassEaterLength
+        var predatorLength
+        var spiderLength
+        var dragonLength
+        //Check objects array length null or number
         if (grassCount !== null) {
             grassLength =  grassCount.length
         } else {
             grassLength = 0
+        } 
+        if (grassEaterCount !== null) {
+            grassEaterLength =  grassEaterCount.length
+        } else {
+            grassEaterLength = 0
+        } 
+        if (predatorCount !== null) {
+            predatorLength =  predatorCount.length
+        } else {
+            predatorLength = 0
         }
+        if (spiderCount !== null) {
+            spiderLength =  spiderCount.length
+        } else {
+            spiderLength = 0
+        }
+        if (dragonCount !== null) {
+            dragonLength =  dragonCount.length
+        } else {
+            dragonLength = 0
+        }
+        //Check how many item eat objects
+        var grassEat = data.grassEat; 
+        var predatorEat = data.predatorEat
+        var spiderEat = data.spiderEat
+        var dragonEat = data.dragonEat
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color
@@ -27,10 +68,14 @@ function setup() {
 
         //! Drawing and coloring RECTs
         for (var y = 0; y < matrix.length; y++) {
-            for (var x = 0; x < matrix[y].length; x++) {    
-                if (matrix[y][x] == 1) {
+            for (var x = 0; x < matrix[y].length; x++) { 
+                if (matrix[y][x] === 1 && data.weather === 'Winter') {
+                    fill('blue')
+                }  
+                else if (matrix[y][x] == 1) {
                     fill("green");
                 }
+                
                 else if (matrix[y][x] == 2) {
                     fill("yellow");
                 }
@@ -50,6 +95,10 @@ function setup() {
             }
         }
         grassCountElement.innerText = grassLength === 0 ? 'Չի ծնվել' : `Ծնվել է ${grassLength} հատ`
-        grassEaterElement.innerHTML = `Կերել է ${grassEat} հատ`
+        grassEaterElement.innerHTML = `Կերել է ${grassEat} հատ <br><br> Ծնվել Է ${grassEaterLength}`
+        predatorElement.innerHTML = `Կերել է ${predatorEat} հատ <br><br> Ծնվել է ${predatorLength} հատ`
+        spiderElement.innerHTML =  `Կերել է ${spiderEat} հատ <br><br> Ծնվել է ${spiderLength} հատ`
+        dragonElement.innerHTML =  `Կերել է ${dragonEat.grass} խոտ, ${dragonEat.spider} սարդ, ${dragonEat.grassEater} խոտակեր, ${dragonEat.predator} գիշատիչ <br><br> Ծնվել է ${dragonLength} հատ`
+        weatherElement.innerHTML = data.weather
     }
 }

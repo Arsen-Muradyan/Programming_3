@@ -6,7 +6,13 @@ module.exports = class Grass extends LivingCreature {
         this.multiply = 0
     }
     mul() {
-        this.multiply+=2
+        var w = weather.toLowerCase()
+        if (w === 'winter') {
+            this.multiply+=1
+        }else {
+            this.multiply+=2
+        }
+    
         var newCell = random(super.chooseCell(0));
         if (this.multiply >= 10 && newCell) {
             var newGrass = new Grass(newCell[0], newCell[1], this.index);

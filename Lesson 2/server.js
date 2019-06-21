@@ -5,18 +5,41 @@ var HerbivorouEater = require('./class.predator')
 var Spider = require('./class.spider')
 var Dragon = require('./class.dragon')
 // Global Vairables
+//Set Weather Settings
+var n = 2;
+var weathers = ['Winter', 'Spring', 'Summer', 'Autumn']
+weather = 'Winter'
+setInterval(() => {
+    n+=0.1
+    if (Math.round(n) >= 4) {
+        n = 0
+    }
+    weather = weathers[Math.round(n)]
+}, 100)
+console.log(weather)
+setInterval(() => {
+    console.log(weather)
+}, 100)
+//Vairavles
 matrix = [];
 grassArr = [];
 grassEaterArr = [];
 herbivorouEaterArr = []
-grassEaterWork = 0; 
+grassEaterWork = 0;
+predatorWork = 0;
+spiderWork = 0
+dragonWork = {
+    grass: 0,
+    grassEater: 0,
+    predator: 0,
+    spider: 0,
+}
 spiderArr = []
 dragonArr = []
 
 //Matrix Generation settings
-m = 20;
+m = 50;
 n = m
-
 var mat = [];
 function pushing(arr) {
     var d = [];
@@ -100,9 +123,14 @@ function game() {
         dragonArr[i].mul()
         dragonArr[i].dead();
     } 
+
     var sendData = {
         grassEat: grassEaterWork, 
-        matrix: matrix,
+        predatorEat: predatorWork,
+        spiderEat: spiderWork,
+        dragonEat: dragonWork,
+        matrix,
+        weather
     }
     io.sockets.emit("data", sendData)
 }

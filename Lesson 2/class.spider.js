@@ -77,6 +77,7 @@ module.exports = class Spider extends LivingCreature {
             this.y = newY;
             this.x = newX; 
             this.energy += 3;
+            spiderWork++;
         }
     }
     mul() {

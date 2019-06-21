@@ -50,6 +50,7 @@ module.exports = class Dragon extends LivingCreature {
                 this.y = newY;
                 this.x = newX;
                 this.energy += 6;
+                dragonWork.spider++
             }
             else if (matrix[newY][newX] == 3) {
                 matrix[this.y][this.x] = 0;
@@ -63,6 +64,7 @@ module.exports = class Dragon extends LivingCreature {
                 this.y = newY;
                 this.x = newX;
                 this.energy += 4 
+                dragonWork.predator++
             }
             else if(matrix[newY][newX] == 2) {
                 matrix[this.y][this.x] = 0;
@@ -76,6 +78,7 @@ module.exports = class Dragon extends LivingCreature {
                 this.y = newY;
                 this.x = newX;
                 this.energy += 3 
+                dragonWork.grassEater++
             }
             else if(matrix[newY][newX] == 1) {
                 matrix[this.y][this.x] = 0;
@@ -89,6 +92,7 @@ module.exports = class Dragon extends LivingCreature {
                 this.y = newY;
                 this.x = newX;
                 this.energy++
+                dragonWork.grass++
             }
         }
     }
